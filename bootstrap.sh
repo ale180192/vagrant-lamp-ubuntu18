@@ -18,18 +18,23 @@ cd ~
 curl -sS https://getcomposer.org/installer -o composer-setup.php
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 # create database
-mysql -u root -proot -e "create database database_x character SET utf8mb4 collate utf8mb4_unicode_ci";
-mysql -u root -proot -e "create database database_x character SET utf8mb4 collate utf8mb4_unicode_ci";
-mysql -u root -proot -e "create database database_x character SET utf8mb4 collate utf8mb4_unicode_ci";
-mysql -u root -proot -e "create database database_x character SET utf8mb4 collate utf8mb4_unicode_ci";
-cd /var/www/public
+mysql -u root -proot -e "create database ld3_telmex character SET utf8 collate utf8_general_ci";
+mysql -u root -proot -e "create database ld3_nic character SET utf8 collate utf8_general_ci";
+cd /var/www/html
 composer install
 
 # cambiar AllowOverride None por AllowOverride All para permitir usar los .htaccess y reiniciar el servidor
 # TODO: Hacer un virtual host por script con esta funcionalidad
-#
+# sudo nano /etc/apache2/apache2.conf
+# sudo systemctl restart apache2
 #<Directory /var/www/>
 #        Options Indexes FollowSymLinks
 #        AllowOverride None
 #        Require all granted
 #</Directory>
+
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+</Directory>
