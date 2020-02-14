@@ -23,8 +23,8 @@ xdebug.remote_host = 10.0.2.2
 xdebug.remote_log = /var/log/xdebug.log
 EOT
 # config apache server, enable .htaccess files
-sed -i '/^/d' /etc/php/7.2/apache2/conf.d/20-xdebug.ini
-cat <<EOT >> /etc/php/7.2/apache2/conf.d/20-xdebug.ini
+sed -i '/^/d' /etc/apache2/apache2.conf /var/www/html/apache2.conf
+cat <<EOT >> /etc/apache2/apache2.conf /var/www/html/apache2.conf
 DefaultRuntimeDir ${APACHE_RUN_DIR}
 PidFile ${APACHE_PID_FILE}
 Timeout 300
