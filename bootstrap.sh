@@ -23,18 +23,18 @@ xdebug.remote_host = 10.0.2.2
 xdebug.remote_log = /var/log/xdebug.log
 EOT
 # config apache server, enable .htaccess files
-sed -i '/^/d' /etc/apache2/apache2.conf /var/www/html/apache2.conf
-cat <<EOT >> /etc/apache2/apache2.conf /var/www/html/apache2.conf
-DefaultRuntimeDir ${APACHE_RUN_DIR}
-PidFile ${APACHE_PID_FILE}
+sed -i '/^/d' /etc/apache2/apache2.conf
+cat <<EOT >> /etc/apache2/apache2.conf
+DefaultRuntimeDir \${APACHE_RUN_DIR}
+PidFile \${APACHE_PID_FILE}
 Timeout 300
 KeepAlive On
 MaxKeepAliveRequests 100
 KeepAliveTimeout 5
-User ${APACHE_RUN_USER}
-Group ${APACHE_RUN_GROUP}
+User \${APACHE_RUN_USER}
+Group \${APACHE_RUN_GROUP}
 HostnameLookups Off
-ErrorLog ${APACHE_LOG_DIR}/error.log
+ErrorLog \${APACHE_LOG_DIR}/error.log
 LogLevel warn
 # Include module configuration:
 IncludeOptional mods-enabled/*.load

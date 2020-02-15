@@ -7,10 +7,11 @@ download this repository, install vagran of site official and run the next comma
 vagran up
 ```
 
-TODO: Hacer un virtual host por script con esta funcionalidad
-cambiar AllowOverride None por AllowOverride All para permitir usar los .htaccess y reiniciar el servidor
-Directory /var/www/>
-       Options Indexes FollowSymLinks
-       AllowOverride None
-       Require all granted
-/Directory>
+# support debuging by xdebug. 
+* you must install the plugin 'php debug' by Felix Becker. 
+* the break points not work, you must use the xdebug_break() funtion for put a break point
+* to activate debug mode, go to menu de debug and select start debugging after run from browser the script php.
+
+# php admin
+
+* for use phpadmin only must download the official proyect, unzip, rename to phpadmin, mv to html folder from of this proyect and run on browser localhost/phpadmin
