@@ -15,3 +15,4 @@ vagran up
 # php admin
 
 * for use phpadmin only must download the official proyect, unzip, rename to phpadmin, mv to html folder from of this proyect and run on browser localhost/phpadmin
+* user and password are root for both
