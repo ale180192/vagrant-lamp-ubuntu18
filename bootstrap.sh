@@ -8,7 +8,7 @@ sudo mysql -u root -proot -e "FLUSH PRIVILEGES";
 sudo apt install -y apache2
 sudo ufw allow 'Apache Full'
 # inmstall php
-sudo apt install -y php libapache2-mod-php php-mysql php-xdebug
+sudo apt install -y php libapache2-mod-php php-mysql php-xdebug php-curl php-xml
 
 #xdebug config
 sed -i '/^/d' /etc/php/7.2/apache2/conf.d/20-xdebug.ini
