@@ -42,13 +42,6 @@ IncludeOptional mods-enabled/*.conf
 # Include list of ports to listen on
 Include ports.conf
 AccessFileName .htaccess
-RewriteCond %{REQUEST_URI} ^/system.*
-RewriteRule ^(.*)$ index.php?/$1 [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+)$ index.php?/$1 [L]
-RewriteRule ^inspinia/?$ index.php/inspinia [L]
-ErrorDocument 404 index.php
 
 <Directory />
     Options FollowSymLinks
@@ -62,7 +55,7 @@ ErrorDocument 404 index.php
 
 <Directory /var/www/>
     Options Indexes FollowSymLinks
-    AllowOverride None
+    AllowOverride All
     Require all granted
 </Directory>
 
