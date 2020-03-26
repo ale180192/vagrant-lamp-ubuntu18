@@ -25,40 +25,58 @@ EOT
 # config apache server, enable .htaccess files
 sed -i '/^/d' /etc/apache2/apache2.conf
 cat <<EOT >> /etc/apache2/apache2.conf
-DefaultRuntimeDir \${APACHE_RUN_DIR}
-PidFile \${APACHE_PID_FILE}
+DefaultRuntimeDir ${APACHE_RUN_DIR}
+PidFile ${APACHE_PID_FILE}
 Timeout 300
 KeepAlive On
 MaxKeepAliveRequests 100
 KeepAliveTimeout 5
-User \${APACHE_RUN_USER}
-Group \${APACHE_RUN_GROUP}
+User ${APACHE_RUN_USER}
+Group ${APACHE_RUN_GROUP}
 HostnameLookups Off
-ErrorLog \${APACHE_LOG_DIR}/error.log
+ErrorLog ${APACHE_LOG_DIR}/error.log
 LogLevel warn
 # Include module configuration:
 IncludeOptional mods-enabled/*.load
 IncludeOptional mods-enabled/*.conf
 # Include list of ports to listen on
 Include ports.conf
+AccessFileName .htaccess
+
 <Directory />
-	Options FollowSymLinks
-	AllowOverride None
-	Require all denied
+    Options FollowSymLinks
+    AllowOverride None
+    Require all denied
 </Directory>
 <Directory /usr/share>
-	AllowOverride None
-	Require all granted
+        AllowOverride None
+        Require all granted
 </Directory>
+
 <Directory /var/www/>
-	Options Indexes FollowSymLinks
-	AllowOverride All
-	Require all granted
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
 </Directory>
-AccessFileName .htaccess
+
 <FilesMatch "^\.ht">
-	Require all denied
+    Require all denied
 </FilesMatch>
+
+<VirtualHost *:80>
+    ServerName totalplay.ld3
+    ServerAlias totalplay
+
+    SetEnv ENV development
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName nic-ecuador.ld3
+    ServerAlias nic-ecuador
+
+    SetEnv ENV development
+</VirtualHost>
+
 LogFormat "%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" vhost_combined
 LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined
 LogFormat "%h %l %u %t \"%r\" %>s %O" common
