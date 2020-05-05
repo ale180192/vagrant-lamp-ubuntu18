@@ -22,7 +22,7 @@ edit to ./vscode/launch.jso file
             "type": "php",
             "request": "launch",
             "pathMappings": {
-                "/var/www/html": "${workspaceFolder}"
+                "/var/www/html": "${workspaceFolder}/html"
             },
             "port": 9000,
             "log": true,
