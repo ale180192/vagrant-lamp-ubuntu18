@@ -9,7 +9,6 @@ vagran up
 
 # support debugging by xdebug. 
 * you must install the plugin 'php debug' by Felix Becker. 
-* the break points not work, you must use the xdebug_break() funtion for put a break point
 * to activate debug mode, go to menu de debug and select start debugging after run from browser the script php.
 
 edit to ./vscode/launch.jso file
